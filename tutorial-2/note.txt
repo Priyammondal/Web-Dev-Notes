@@ -10,13 +10,20 @@ Scope determines the accessibility (visibility) of variables.
 
 -> Global Scope
 A variable declared outside a function, becomes GLOBAL.
-variable declares within a block with "var" keyword also global. It can be accesed and modified anywhere in the code 
+variable declares within a block with "var" keyword also global. 
+It can be accesed and modified anywhere in the code 
 
 -> Function Scope
-A variable declared inside a function, regardless of var, "let" or "const", it is local to that function only. Outside of the function there is no existence of that variable. If you try to access those variables outside of the function it will throw error.
+A variable declared inside a function, regardless of var, "let" or "const", it is 
+local to that function only. Outside of the function there is no existence of that variable. 
+If you try to access those variables outside of the function it will throw error.
 
 -> Block Scope
-Before 2015 there was no concept of a block scope in javascript but then with ES-6 comes new two way to declare variables in javascript "let" and "const". those two are block scoped that means a variable declared with any of those two keywords in a block( which is nothing but a curly bracket{}) are local to the block only can not be access outside of the block. 
+Before 2015 there was no concept of a block scope in javascript but then with ES-6 comes 
+new two way to declare variables in javascript "let" and "const". 
+those two are block scoped that means a variable declared with any of those two 
+keywords in a block( which is nothing but a curly bracket{}) are local to the 
+block only can not be access outside of the block. 
 
 Hoisting
 ----------------------------------------------------------------
@@ -30,11 +37,14 @@ var age = 24;
 
 Temporal Dead Zone (TDZ)
 ----------------------------------------------------------------
-A temporal dead zone (TDZ) is the area of a block where a variable is inaccessible until the moment the computer completely initializes it with a value.
+A temporal dead zone (TDZ) is the area of a block where a variable is inaccessible 
+until the moment the computer completely initializes it with a value.
 
-Suppose you attempt to access a variable before its complete initialization. In such a case, JavaScript will throw a ReferenceError.
+Suppose you attempt to access a variable before its complete initialization. 
+In such a case, JavaScript will throw a ReferenceError.
 
-So, to prevent JavaScript from throwing such an error, you’ve got to remember to access your variables from outside the temporal dead zone.
+So, to prevent JavaScript from throwing such an error, you’ve got to remember 
+to access your variables from outside the temporal dead zone.
 
 But where exactly does the TDZ begin and end?
 
@@ -70,7 +80,8 @@ Example2:
   console.log(bestFood); // returns "Vegetable Fried Rice" because bestFood’s TDZ does not exist here
 }
 
-JavaScript returned undefined because we did not assign bestFood a value before using (invoking) it. As such, JavaScript defaulted its value to undefined.
+JavaScript returned undefined because we did not assign bestFood a value 
+before using (invoking) it. As such, JavaScript defaulted its value to undefined.
 
 Var works differently --->
 
@@ -83,13 +94,17 @@ Var works differently --->
   // bestFood’s TDZ does not exist here
 }
 
-The console.log statement successfully returned a value (undefined) because JavaScript automatically assigns undefined to a hoisted var variable.
+The console.log statement successfully returned a value (undefined) because 
+JavaScript automatically assigns undefined to a hoisted var variable.
 
-In other words, when the computer hoists a var variable, it automatically initializes the variable with the value undefined.
+In other words, when the computer hoists a var variable, it automatically 
+initializes the variable with the value undefined.
 
-In contrast, JavaScript does not initialize a let (or const) variable with any value whenever it hoists the variable. Instead, the variable remains dead and inaccessible.
+In contrast, JavaScript does not initialize a let (or const) variable with 
+any value whenever it hoists the variable. Instead, the variable remains dead and inaccessible.
 
-Therefore, a let (or const) variable’s TDZ ends when JavaScript fully initializes it with the value specified during its declaration.
+Therefore, a let (or const) variable’s TDZ ends when JavaScript fully 
+initializes it with the value specified during its declaration.
 
 However, a var variable’s TDZ ends immediately after its hoisting—not when the variable gets fully initialized with the value specified during its declaration.
 
