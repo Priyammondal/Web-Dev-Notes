@@ -1,0 +1,64 @@
+1. Basic Javascript
+
+- What is Javascript
+- variables
+- word vs keywords
+- template literal
+- destructuring (array, object)
+- Hoisting
+- var Vs let Vs const
+- temporal dead zone
+- data types
+- type conversion
+- basic operators
+- comparisons
+- logical operators
+- loops
+- conditional branching
+- ternary
+- nullish coalescing operator
+- switch case
+- Function
+- scope
+- how to coy reference values (array, object)
+- rest, spread operator
+- truthy vs falsy
+- array
+- array is basicaly type object
+- object
+- methods
+
+2. Advance Javascript	
+
+- HOF
+- constructor function
+- first class function
+- pure, impure function
+- prototype
+- prototypal inheritance
+- transpilers
+- polyfills
+- IIFE
+- getter, setter
+- lexical scope
+- closure
+- callback
+- memoization
+- asynchronous javascript
+- this, call, apply, bind
+- OOP in javascript
+- data structures
+
+3. Browser Javascript
+
+- How Javascript works behind the scene
+- stack
+- heap
+- execution context
+- DOM
+- play with the DOM
+- browser api
+- events and propagation in DOM
+- event delegation
+- debouncing
+- throttling

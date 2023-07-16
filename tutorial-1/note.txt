@@ -1,0 +1,30 @@
+JavaScript was invented by Brendan Eich in 1995.
+It was developed for Netscape 2, and became the ECMA-262 standard in 1997.
+
+After Netscape handed JavaScript over to ECMA, the Mozilla foundation continued to develop JavaScript for the Firefox browser.
+
+Internet Explorer (IE4) was the first browser to support ECMA-262 Edition 1 (ES1).
+
+1997 - ES-1
+2009 - ES-5
+2015 - ES-6
+2023 - ES-14 (latest)
+
+Initially named Mocha, then LiveScript, and finally JavaScript.
+
+Initially it was made to run JavaScript on browser. Various Browser has various 
+different different scripting engines to run JavaScript.
+
+SpiderMonkey -> Firefox
+V8 -> Chrome, Edge, Opera
+JavaScriptCore -> Safari
+
+Later in 2009 Ryan Dahl created a runtime for JavaScript using chromes V8 engine 
+to run JavaScript outside browser known as Node.js
+
+we can include js in html in two ways
+1. Inernal js -> write js inside <script></script> tag. Multiple script tags are 
+allowed in hte same html file.
+2. External js file -> in the script tag there is an attribute called src, where
+that js file can be linked.
+
