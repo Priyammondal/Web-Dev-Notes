@@ -150,3 +150,49 @@ so why then type is object and not null?
 this is an error in the language, it’s not actually an object. and 
 it is not being corrected because of compatibility issues.
 
+
+----------------------------------------------------------------
+Type Conversions
+
+1. Implicit conversions
+
+JS is a dynamic language means data types of the variables can change during the runtime;
+Js determines data types depending on the value assigned.
+
+let value = true; // boolean
+value = 45; // now it is converted to a number
+value = 45n // now it is converted to a bigInt
+value = "sde" // now it is converted to a string
+
+2. explicit conversions
+
+There are also cases when we need to explicitly convert a value to the expected type.
+
+## string conversion
+
+let value = true; // boolean
+value = String(value) // "true" -> now it is converted to a string
+
+## numeric conversion
+
+let value1 = "6" // string
+value1 = Number(value1) // now it is converted to a number
+
+undefined -> NaN
+null -> 0
+true and false -> 1 and 0
+string	Whitespaces (includes spaces, tabs \t, newlines \n etc.) 
+from the start and end are removed. 
+If the remaining string is empty, the result is 0. 
+Otherwise, the number is “read” from the string. An error gives NaN.
+
+## boolean conversion
+
+let value2 = "false" // string
+value2 = Boolean(value2) // now it is converted to a boolean
+
+Values that are intuitively “empty”, like 0, an empty string, null, undefined, and NaN, become false.
+Other values become true.
+
+
+
