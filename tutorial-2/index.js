@@ -97,4 +97,11 @@ console.log(pi) */
 
 // 4. var and let can be declard without initialization but const has to be initialized
 
+console.log(age);
+var age = 24;
+
+
+let age;
+console.log(age)
+age = 24;
 

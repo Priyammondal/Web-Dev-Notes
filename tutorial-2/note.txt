@@ -106,15 +106,19 @@ any value whenever it hoists the variable. Instead, the variable remains dead an
 Therefore, a let (or const) variable’s TDZ ends when JavaScript fully 
 initializes it with the value specified during its declaration.
 
-However, a var variable’s TDZ ends immediately after its hoisting—not when the variable gets fully initialized with the value specified during its declaration.
+However, a var variable’s TDZ ends immediately after its hoisting—not when the variable gets fully 
+initialized with the value specified during its declaration.
 
 var Vs let Vs const
 ----------------------------------------------------------------
 1. variable declared with with var is attached to the window object. But variable 
 declared with let and const is not attached to the window object.
+
 2. Scope of the var is Global and Function/local, Scope of let and const is Global, local and block.
+
 3. Redeclaration and Reinitialization allowed in "var". 
 Redeclaration is not allowed for "let" but Reinitialization is allowed.
 Redeclaration and Reinitialization is not allowed for "const".
+
 4. In case of var Hoisting happens with a default value "undefined"
 In case of let and const Hoisting happens without a default value.
