@@ -1,0 +1,264 @@
+1. Basic Operators
+
+-> Binary Operators (+, -, *, /, %, **)
+An operator is binary if it has two operands.
+
+let x = 1, y = 3;
+alert( y - x ); // 2, binary minus subtracts values
+--------------------------------
+alert( 4 ** (1/2) ); // 2 (power of 1/2 is the same as a square root)
+--------------------------------
+alert( 8 % 3 ); // 2, the remainder of 8 divided by 3
+--------------------------------
+String concatenation with binary +
+let s = "my" + "string";
+alert(s); // mystring
+--------------------------------
+if any of the operands is a string, then the other one is 
+converted to a string too.
+alert( '1' + 2 ); // "12"
+alert( 2 + '1' ); // "21"
+alert(2 + 2 + '1' ); // "41" and not "221"
+alert('1' + 2 + 2); // "122" and not "14"
+---------------------------------
+The binary + is the only operator that supports strings in 
+such a way. Other arithmetic operators work only with numbers 
+and always convert their operands to numbers.
+alert( 6 - '2' ); // 4, converts '2' to a number
+alert( '6' / '2' ); // 3, converts both operands to numbers
+---------------------------------------------------------------
+
+
+-> unary Operators (+, -)
+An operator is unary if it has a single operand.
+For example, the unary negation - reverses the sign of a number
+
+let x = 1;
+x = -x;
+alert( x ); // -1, unary negation was applied
+--------------------------------
+Numeric conversion, unary +
+The unary plus or, in other words, the plus operator + applied 
+to a single value, doesn’t do anything to numbers. But if the 
+operand is not a number, the unary plus converts it into a number.
+It actually does the same thing as Number(...), but is shorter.
+
+// No effect on numbers
+let x = 1;
+alert( +x ); // 1
+
+let y = -2;
+alert( +y ); // -2
+
+// Converts non-numbers
+alert( +true ); // 1
+alert( +"" );   // 0
+----------------------------------------------------------------
+let apples = "2";
+let oranges = "3";
+
+alert( apples + oranges ); // "23", the binary plus concatenates strings
+----------------------------------------------------------------
+
+
+-> assignment Operators
+
+Assignment = returns a value
+All operators in JavaScript return a value. 
+That’s obvious for + and -, but also true for =.
+
+The call x = value writes the value into x and then returns it.
+----------------------------------------------------------------
+let a = 1;
+let b = 2;
+
+let c = 3 - (a = b + 1);
+
+alert( a ); // 3
+alert( c ); // 0
+----------------------------------------------------------------
+Chaining assignments
+let a, b, c;
+
+a = b = c = 2 + 2;
+
+alert( a ); // 4
+alert( b ); // 4
+alert( c ); // 4
+
+Chained assignments evaluate from right to left. 
+First, the rightmost expression 2 + 2 is evaluated and then 
+assigned to the variables on the left: c, b and a. At the end, 
+all the variables share a single value
+----------------------------------------------------------------
+let n = 2;
+n += 5; // now n = 7 (same as n = n + 5)
+n *= 2; // now n = 14 (same as n = n * 2)
+
+alert( n ); // 14
+--------------------------------
+let n = 2;
+
+n *= 3 + 5; // right part evaluated first, same as n *= 8
+
+alert( n ); // 16
+--------------------------------
+
+
+-> increment/decrement operators
+
+Increasing or decreasing a number by one
+
+Increment ++ increases a variable by 1:
+let counter = 2;
+counter++; // works the same as counter = counter + 1, but is shorter
+alert( counter ); // 3
+----------------------------------------------------
+Decrement -- decreases a variable by 1:
+let counter = 2;
+counter--; // works the same as counter = counter - 1, but is shorter
+alert( counter ); // 1
+----------------------------------------------------
+Increment/decrement can only be applied to variables. 
+Trying to use it on a value like 5++ will give an error.
+----------------------------------------------------
+The operators ++ and -- can be placed either before or after a variable.
+“postfix form”: counter++
+“prefix form” : ++counter
+both increases value by one but there is a catch.
+but we can only see it if we use the returned value of ++/--.
+
+As we know, all operators return a value. 
+Increment/decrement is no exception. The prefix form returns the 
+new value while the postfix form returns the old value 
+(prior to increment/decrement).
+
+let counter = 1;
+let a = ++counter; // the prefix form ++counter increments counter 
+and returns the new value, 2. So, the alert shows 2.
+
+alert(a); // 2
+--------------------------------
+let counter = 1;
+let a = counter++; // the postfix form counter++ also increments 
+counter but returns the old value (prior to increment). 
+So, the alert shows 1.
+
+alert(a); // 1
+--------------------------------
+If the result of increment/decrement is not used, 
+there is no difference in which form to use:
+let counter = 0;
+counter++;
+++counter;
+alert( counter ); // 2, the lines above did the same
+--------------------------------
+Increment/decrement among other operators
+let counter = 1;
+alert( 2 * ++counter ); // 4
+~~~~~~~~~~~~~~~~
+let counter = 1;
+alert( 2 * counter++ ); // 2, because counter++ returns the "old" value
+--------------------------------
+
+
+-> bitwise operator
+
+Bitwise operators treat arguments as 32-bit integer numbers 
+and work on the level of their binary representation.
+
+AND ( & )
+5 & 1 --> 0101 & 0001 --> 0001 --> 1
+
+OR ( | )
+5 | 1 --> 0101 | 0001 --> 0101 --> 5
+
+XOR ( ^ )
+5 ^ 1 --> 0101 ^ 0001 --> 0100 --> 4
+
+NOT ( ~ )
+~ 5 --> ~0101 --> 1010 --> 10
+
+LEFT SHIFT ( << )
+This is a zero fill left shift. One or more zero bits are 
+pushed in from the right, and the leftmost bits fall off
+5 << 1 --> 	0101 << 1 --> 1010 --> 10
+
+RIGHT SHIFT ( >> )
+This is a sign preserving right shift. Copies of the leftmost bit 
+are pushed in from the left, and the rightmost bits fall off
+5 >> 1 --> 0101 >> 1 --> 0010 --> 2
+
+ZERO-FILL RIGHT SHIFT ( >>> )
+This is a zero fill right shift. One or more zero bits are pushed in 
+from the left, and the rightmost bits fall off
+5 >>> 1 --> 0101 >>> 1 --> 0010 --> 2
+--------------------------------
+
+-> comma
+
+The comma operator allows us to evaluate several expressions, 
+dividing them with a comma ,. Each of them is evaluated but only 
+the result of the last one is returned.
+
+let a = (1 + 2, 3 + 4);
+alert( a ); // 7 (the result of 3 + 4)
+--------------------------------
+
+2. Comparisons
+
+All comparison operators return a boolean value:
+
+true – means “yes”, “correct” or “the truth”.
+false – means “no”, “wrong” or “not the truth”.
+
+alert( 2 > 1 );  // true (correct)
+alert( 2 == 1 ); // false (wrong)
+alert( 2 != 1 ); // true (correct)
+----------------------------------------------------------------
+String comparison
+
+strings are compared letter-by-letter.
+
+alert( 'Z' > 'A' ); // true
+alert( 'Glow' > 'Glee' ); // true
+alert( 'Bee' > 'Be' ); // true
+----------------------------------------------------------------
+Comparison of different types
+
+When comparing values of different types, JavaScript converts the values to numbers.
+alert( '2' > 1 ); // true, string '2' becomes a number 2
+alert( '01' == 1 ); // true, string '01' becomes a number 1
+alert( true == 1 ); // true
+alert( false == 0 ); // true
+----------------------------------------------------------------
+let a = 0;
+alert( Boolean(a) ); // false
+
+let b = "0";
+alert( Boolean(b) ); // true
+
+alert(a == b); // true!
+
+From JavaScript’s standpoint, this result is quite normal. 
+An equality check converts values using the numeric conversion 
+(hence "0" becomes 0), while the explicit Boolean conversion uses 
+another set of rules.
+----------------------------------------------------------------
+Strict equality
+
+A strict equality operator === checks the equality without type conversion.
+In other words, if a and b are of different types, 
+then a === b immediately returns false without an attempt to convert them.
+There is also a “strict non-equality” operator !== analogous to !=.
+----------------------------------------------------------------
+Comparison with null and undefined
+
+alert( null === undefined ); // false
+alert( null == undefined ); // true
+
+
+-> operator precedence
+
+https://www.w3schools.com/js/js_precedence.asp
+
