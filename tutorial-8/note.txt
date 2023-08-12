@@ -1,0 +1,144 @@
+Objects
+
+There are eight data types in JavaScript. Seven of them are called “primitive”, 
+because their values contain only a single thing (be it a string or a number or 
+whatever).
+
+In contrast, objects are used to store keyed collections of various data and
+more complex entities.
+
+we can only use "string" or "symbol" as keys for an Object.
+Otherwise it symply converts those to string type.
+
+Object is unordered that's why we cannot access the values by index number.
+
+
+## Few ways to create objects ##
+
+1. Object Literal:
+
+const person = {
+    name: "John",
+    age: 30,
+    greet: function() {
+        console.log(`Hello, my name is ${this.name} and I'm ${this.age} years old.`);
+    }
+};
+
+2. Constructor Function:
+
+function Person(name, age) {
+    this.name = name;
+    this.age = age;
+    this.greet = function() {
+        console.log(`Hello, my name is ${this.name} and I'm ${this.age} years old.`);
+    };
+}
+
+const person = new Person("John", 30);
+
+3. Object Constructor:
+
+const person = new Object();
+person.name = "John";
+person.age = 30;
+person.greet = function() {
+    console.log(`Hello, my name is ${this.name} and I'm ${this.age} years old.`);
+};
+
+
+
+## Accessing Object propoerties and methods and some useful tricks ##
+
+const person = {
+  name: "Robin",
+  age: 24,
+  "work doing": "software Engineer",
+  greeting: function () {
+    console.log(`Good Morning Mr.${person.name}`);
+  },
+};
+
+1. Dot(.) notation
+
+console.log(person.name) // "Robin"
+console.log(person.age) // 24
+
+2. Square brackets
+
+The dot requires the key to be a valid variable identifier. 
+That implies: contains no spaces, doesn’t start with a digit and doesn’t 
+include special characters ($ and _ are allowed).
+There’s an alternative “square bracket notation” that works with any string.
+
+console.log(person["work doing"]) // "software Engineer
+
+3. calling the methods (functions inside Object)
+
+person.greeting() // "Good Morning Mr. Robin
+
+4. Adding new properties for the Object
+
+person.hobby = "Coding"
+
+5. Deleting a property
+
+delete person.hobby
+
+6. Getting all the array of the Keys of the Object
+
+console.log(Object.keys(person))
+
+7. Getting all the array of Values of the Object
+
+console.log(Object.values(person))
+
+8. Getting all the key value pairs of the Object
+
+console.log(Object.entries(person))
+
+9. Tesing a property is present in the Object or not
+
+let user = { name: "John", age: 30 };
+
+way 1 :
+
+alert( "age" in user ); // true, user.age exists
+alert( "blabla" in user ); // false, user.blabla doesn't exist
+
+way 2 :
+
+alert(user.hasOwnProperty("age")) // true, user.age exists
+alert(user.hasOwnProperty("blabla")) // false, user.blabla doesn't exist
+
+
+
+## Computed properties ##
+
+We can use square brackets in an object literal, when creating an object. 
+That’s called computed properties.
+
+let fruit = prompt("Which fruit to buy?", "apple");
+let bag = {
+  [fruit]: 5, // the name of the property is taken from the variable fruit
+};
+alert( bag.apple ); // 5 if fruit="apple"
+
+
+## Property names limitations ##
+
+As we already know, a variable cannot have a name equal to one of the 
+language-reserved words like “for”, “let”, “return” etc.
+
+But for an object property, there’s no such restriction
+
+// these properties are all right
+let obj = {
+  for: 1,
+  let: 2,
+  return: 3
+};
+
+alert( obj.for + obj.let + obj.return );  // 6
+
+
