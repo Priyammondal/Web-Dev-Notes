@@ -1,0 +1,246 @@
+// Generator function
+
+The normal functions in Javascript execute according to the non-preemptive or run to completion model, which means their execution cannot be paused in between, but generator functions have the capability to pause the execution in between with the help of the yield keyword.
+
+Generator functions in Javascript are special functions that can generate a sequence of values. Generator Functions in Javascript are used to generate value. Whenever called, they return a Generator Object. The generator object returned by the generator function follows the Iterable Protocol of ES6, so it works similarly to iterators.
+
+Calling the next() method on the generator object only executes the function till the first yield statement and the yield value is returned to the caller. When we repeatedly call the next() method, we can access a sequence of the objects containing two properties; one is thevalue, the value associated with the yield statement, and the other is a boolean flag done, to indicate whether there is something remaining in the function to execute or not.
+
+The yield keyword is used inside the generator to pause and resume the execution. Further, the state of function is retained so that execution can be resumed from the last yield statement.
+
+Example:
+
+function* countNumber() {
+  let number = 1;
+  while (number <= 10) {
+    yield number;
+    number++;
+  }
+}
+
+const numbers = countNumber();
+
+console.log(numbers.next());
+console.log(numbers.next());
+console.log(numbers.next());
+console.log(numbers.next());
+console.log(numbers.next());
+console.log(numbers.next());
+console.log(numbers.next());
+console.log(numbers.next());
+console.log(numbers.next());
+console.log(numbers.next());
+console.log(numbers.next());
+
+The generator function countNumber produces a sequence of numbers from 1 to 10 using a yield statement.
+
+Calling numbers.next() for the first time starts the generator and executes until the first yield statement, yielding the value 1. The done property is false.
+Subsequent calls to numbers.next() continue the generator's execution from where it left off, yielding 2, 3, and so on, until 10 is reached. The done property remains false.
+After yielding 10, the generator completes its execution, and further calls to numbers.next() would result in { value: undefined, done: true }.
+So, in simple terms, next() controls the progression of the generator's execution, and the returned value holds the yielded value while done indicates if the generator has finished or not.
+
+
+----------------------------------------------------------------
+----------------------------------------------------------------
+
+"This" Keyword and its importance in objects
+
+It’s common that an object method needs to access the information stored in the object to do its job.
+For instance, the code inside user.sayHi() may need the name of the user.
+To access the object, a method can use the this keyword.
+The value of this is the object “before dot”, the one used to call the method.
+
+let user = {
+  name: "John",
+  age: 30,
+  sayHi() {
+    // "this" is the "current object"
+    alert(this.name);
+  }
+};
+user.sayHi(); // John
+
+
+** “this” is not bound
+
+In JavaScript, keyword this behaves unlike most other programming languages. It can be used in any function, even if it’s not a method of an object.
+
+function sayHi() {
+  alert( this.name );
+}
+The value of this is evaluated during the run-time, depending on the context.
+For instance, here the same function is assigned to two different objects and has different “this” in the calls:
+
+let user = { name: "John" };
+let admin = { name: "Admin" };
+
+function sayHi() {
+  alert( this.name );
+}
+
+// use the same function in two objects
+user.f = sayHi;
+admin.f = sayHi;
+
+user.f(); // John  (this == user)
+admin.f(); // Admin  (this == admin)
+
+----------------------------------------------------------------
+
+Calling without an object
+
+function sayHi() {
+  alert(this);
+}
+sayHi(); // undefined
+
+In this case this is undefined in strict mode. If we try to access this.name, there will be an error.
+
+In non-strict mode the value of this in such case will be the global object(window)
+Usually such call is a programming error. If there’s this inside a function, it expects to be called in an object context.
+
+----------------------------------------------------------------
+
+Arrow functions have no “this”
+
+Arrow functions are special: they don’t have their “own” this. If we reference this from such a function, it’s taken from the outer “normal” function.
+For instance, here arrow() uses this from the outer user.sayHi() method:
+
+let user = {
+  firstName: "Ilya",
+  sayHi() {
+    let arrow = () => alert(this.firstName);
+    arrow();
+  }
+};
+
+user.sayHi(); // Ilya
+
+That’s a special feature of arrow functions, it’s useful when we actually do not want to have a separate this, but rather to take it from the outer context. 
+
+
+----------------------------------------------------------------
+----------------------------------------------------------------
+
+// Symbol type
+
+By specification, only two primitive types may serve as object property keys:
+
+string type, or
+symbol type.
+Otherwise, if one uses another type, such as number, it’s autoconverted to string. So that obj[1] is the same as obj["1"], and obj[true] is the same as obj["true"].
+
+A “symbol” represents a unique identifier.
+A value of this type can be created using Symbol()
+
+let id = Symbol();
+
+Upon creation, we can give symbols a description (also called a symbol name)
+// id is a symbol with the description "id"
+let id = Symbol("id");
+
+Symbols are guaranteed to be unique. Even if we create many symbols with exactly the same description, they are different values. 
+
+let id1 = Symbol("id");
+let id2 = Symbol("id");
+
+alert(id1 == id2); // false
+
+----------------------------------------------------------------
+Most values in JavaScript support implicit conversion to a string.
+Symbols are special. They don’t auto-convert.
+That’s a “language guard” against messing up, because strings and symbols are fundamentally different and should not accidentally convert one into another.
+
+If we really want to show a symbol, we need to explicitly call .toString()
+
+let id = Symbol("id");
+alert(id.toString()); // Symbol(id), now it works
+
+----------------------------------------------------------------
+Symbols in an object literal
+
+If we want to use a symbol in an object literal {...}, we need square brackets around it.
+
+let id = Symbol("id");
+
+let user = {
+  name: "John",
+  [id]: 123 // not "id": 123
+};
+
+----------------------------------------------------------------
+Symbols are skipped by for…in
+
+Symbolic properties do not participate in for..in loop.
+
+let id = Symbol("id");
+let user = {
+  name: "John",
+  age: 30,
+  [id]: 123
+};
+
+for (let key in user) alert(key); // name, age (no symbols)
+
+// the direct access by the symbol works
+alert( "Direct: " + user[id] ); // Direct: 123
+
+----------------------------------------------------------------
+
+Object.keys(user) also ignores them. That’s a part of the general “hiding symbolic properties” principle. If another script or a library loops over our object, it won’t unexpectedly access a symbolic property.
+
+In contrast, Object.assign copies both string and symbol properties:
+
+let id = Symbol("id");
+let user = {
+  [id]: 123
+};
+
+let clone = Object.assign({}, user);
+
+alert( clone[id] ); // 123
+
+--------------------------------
+--------------------------------
+Global symbols
+
+// read from the global registry
+let id = Symbol.for("id"); // if the symbol did not exist, it is created
+
+// read it again (maybe from another part of the code)
+let idAgain = Symbol.for("id");
+
+// the same symbol
+alert( id === idAgain ); // true
+
+
+Global symbols, Symbol.for(key) returns a symbol by name. To do the opposite – return a name by global symbol – we can use: Symbol.keyFor(sym):
+
+// get symbol by name
+let sym = Symbol.for("name");
+let sym2 = Symbol.for("id");
+
+// get name by symbol
+alert( Symbol.keyFor(sym) ); // name
+alert( Symbol.keyFor(sym2) ); // id
+
+The Symbol.keyFor internally uses the global symbol registry to look up the key for the symbol. So it doesn’t work for non-global symbols. If the symbol is not global, it won’t be able to find it and returns undefined.
+
+That said, all symbols have the description property.
+
+For instance:
+
+let globalSymbol = Symbol.for("name");
+let localSymbol = Symbol("name");
+
+alert( Symbol.keyFor(globalSymbol) ); // name, global symbol
+alert( Symbol.keyFor(localSymbol) ); // undefined, not global
+
+alert( localSymbol.description ); // name
+
+
+
+
+reference --> https://javascript.info/symbol#symbols-in-an-object-literal
+
+
