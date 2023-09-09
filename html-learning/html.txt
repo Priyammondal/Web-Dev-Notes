@@ -1,0 +1,12 @@
+HTML -> Hyper Text Markup Language
+html is the code that is used to structure a web page and its content
+
+meta data is used for SEO Purpose. 
+
+html tag -> a container for some content or other html tags
+
+
+hmtl is not case sensitive
+
+<p> </p> === <P></P>
+<head></head> === <HEAD></HEAD>

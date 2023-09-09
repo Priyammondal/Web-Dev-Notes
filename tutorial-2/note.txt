@@ -116,7 +116,7 @@ declared with let and const is not attached to the window object.
 
 2. Scope of the var is Global and Function/local, Scope of let and const is Global, local and block.
 
-3. Redeclaration and Reinitialization allowed in "var". 
+3. Redeclaration and Reinitialization allowed in "var".
 Redeclaration is not allowed for "let" but Reinitialization is allowed.
 Redeclaration and Reinitialization is not allowed for "const".
 

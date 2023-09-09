@@ -112,7 +112,7 @@ while undefined is reserved as a default initial value for unassigned things.
 ## symbol ##
 
 The symbol type is used to create unique identifiers for objects.
-let id = Symbol("id)
+let id = Symbol("id")
 
 
 ## objects ##
