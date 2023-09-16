@@ -10,3 +10,26 @@ hmtl is not case sensitive
 
 <p> </p> === <P></P>
 <head></head> === <HEAD></HEAD>
+
+
+Two types of elements in html 
+1. Block elements
+2. inline elements
+
+
+
+17th September, 2023
+
+1. Form in html
+-> Form
+-> action in Form
+-> label
+-> input (different types)
+-> class & id
+-> checkbox
+-> textarea
+-> select
+
+
+2. iframe
+3. video
