@@ -1,0 +1,31 @@
+/* element selector  */
+h1 {
+  color: red;
+  background-color: yellow;
+}
+
+/* id selector  */
+#box1 {
+  color: brown;
+  text-decoration: underline dotted red;
+  text-align: center;
+  /* font-size: normal; */
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  /* font weight resides between 100 - 900  */
+  font-weight: 900;
+}
+#box2 {
+  color: chartreuse;
+}
+
+/* class selecor  */
+.something {
+  /* background-color: cornflowerblue; */
+  color: darkblue;
+}
+
+/* universal selector  */
+
+* {
+  /* text-align: justify; */
+}
