@@ -16,16 +16,45 @@ h1 {
 }
 #box2 {
   color: chartreuse;
+  text-decoration: line-through;
 }
-
+#box3 {
+  text-decoration: overline wavy yellow;
+  font-size: 20px;
+  font-weight: 900;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  text-align: right;
+  border: 2px solid black;
+  border-style: double;
+  /* border-radius: 50%; */
+  padding: 20px 40px 50px 60px;
+  margin: 10px 20px 30px 40px;
+  height: 200px;
+  width: 200px;
+}
 /* class selecor  */
 .something {
   /* background-color: cornflowerblue; */
   color: darkblue;
+}
+.newbox3 {
+  background-color: plum;
 }
 
 /* universal selector  */
 
 * {
   /* text-align: justify; */
+}
+
+.newbox5 {
+  font-weight: 900;
+  font-size: 25px;
+  /* color: rgb(104, 33, 126); */
+  /* color: rgba(104, 33, 126, 1); */
+  color: #6b273c;
+}
+
+#name {
+  text-transform: lowercase;
 }
