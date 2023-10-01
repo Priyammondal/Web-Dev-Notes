@@ -1,0 +1,26 @@
+/* Relative units in css
+1. Percentage - done
+2. em - done
+3. rem - done
+4. vh vw - done
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.outer {
+  /* height: 500px;
+  width: 500px; */
+  height: 100vh;
+  width: 50vw;
+  background-color: aqua;
+  font-size: 20px;
+}
+.inner {
+  height: 6rem;
+  width: 4rem;
+  background-color: burlywood;
+  font-size: 2rem;
+}
